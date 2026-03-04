@@ -3,39 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طه المختار | محفظة الأعمال</title>
-    <!-- تحسين الأداء وأرشفة محركات البحث (SEO) -->
+    <title>طه المختار | موقع شخصي</title>
     <meta name="description" content="موقع طه المختار - طالب علوم الحاسوب ومهتم بالذكاء الاصطناعي والتعلم العميق. استعرض خبراتي ومشاريعي وشهاداتي.">
     <meta name="keywords" content="طه المختار, علوم الحاسوب, الذكاء الاصطناعي, التعلم العميق, مشاريع, شهادات, مبرمج, بايثون">
     <meta name="author" content="طه المختار">
 
-    <!-- Open Graph / Meta Tags لمشاركة الروابط -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="طه المختار | محفظة الأعمال">
+    <meta property="og:title" content="طه المختار | موقع شخصي">
     <meta property="og:description" content="طالب في علوم الحاسوب ومهتم بالذكاء الاصطناعي. اكتشف مهاراتي ومشاريعي التقنية.">
     <meta property="og:image" content="hBS8PWTj3blQ.jpg">
     
-    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="طه المختار | محفظة الأعمال">
+    <meta name="twitter:title" content="طه المختار | موقع شخصي">
     <meta name="twitter:description" content="طالب علوم حاسوب ومهتم بالذكاء الاصطناعي والتعلم الآلي.">
     <meta name="twitter:image" content="hBS8PWTj3blQ.jpg">
 
-    <!-- Favicon (أيقونة الموقع لتجنب خطأ 404) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
 
-    <!-- تحسين الأداء باستخدام مكتبة Font Awesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <!-- تحسين الأداء بتحميل Tailwind CSS من CDN مع وضع deter -->
     <script src="https://cdn.tailwindcss.com" defer></script>
     
-    <!-- ملف الستايل الخاص -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased overflow-hidden">
 
-    <!-- Controls -->
     <div class="fixed top-4 left-4 z-[100] flex gap-2 dir-ltr">
         <button id="theme-toggle" aria-label="Toggle Theme" class="w-10 h-10 rounded-full border border-[var(--primary-color)] bg-[var(--card-bg)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition flex items-center justify-center cursor-pointer">
             <i class="fas fa-sun"></i>
@@ -45,15 +37,12 @@
         </button>
     </div>
 
-    <!-- 💡 تأثير المؤشر النيوني -->
     <div id="cursor-glow" class="cursor-glow" style="pointer-events: none;"></div>
 
     <div id="game-container" class="relative w-screen h-screen overflow-hidden">
         
-        <!-- خلفية متحركة / Hero Section as Background -->
         <div id="desktop-background" class="absolute inset-0 z-0">
              <section id="hero" class="h-full w-full flex items-center justify-center p-4 relative overflow-hidden">
-                <!-- تأثير خلفية نيون خفيف -->
                 <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--primary-color)]/20 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
                 <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-600/20 rounded-full filter blur-3xl opacity-30 animate-pulse animation-delay-500"></div>
                 
@@ -70,10 +59,7 @@
                 </div>
             </section>
         </div>
-
-        <!-- نوافذ المحتوى (Content Windows) -->
         
-        <!-- Window: About Me -->
         <div id="window-about" class="game-window hidden w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-[50%] h-[85%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
             <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
                 <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-user-circle mr-2"></i> <span data-i18n="win_about_title">من أنا</span></h3>
@@ -112,7 +98,6 @@
 
 
 
-        <!-- Window: Skills -->
         <div id="window-skills" class="game-window hidden w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] h-[85%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
             <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
                 <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-code mr-2"></i> <span data-i18n="win_skills_title">المهارات</span></h3>
@@ -183,7 +168,6 @@
             </div>
         </div>
 
-        <!-- Window: Projects -->
         <div id="window-projects" class="game-window hidden w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] h-[85%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
             <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
                 <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-project-diagram mr-2"></i> <span data-i18n="win_proj_title">المشاريع</span></h3>
@@ -201,7 +185,6 @@
                      </a>
                  </div>
                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                     <!-- Project: Focus Flow -->
                      <div class="bg-[var(--card-bg)] rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-[var(--primary-color)] transition group">
                         <div class="h-40 bg-gray-800 flex items-center justify-center text-gray-600 border-b border-gray-700 group-hover:bg-gray-700 transition"><i class="fas fa-bullseye text-4xl"></i></div>
                         <div class="p-4 text-right">
@@ -217,7 +200,6 @@
                         </div>
                      </div>
 
-                     <!-- Project 4: Calculator -->
                      <div class="bg-[var(--card-bg)] rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-[var(--primary-color)] transition group">
                         <div class="h-40 bg-gray-800 flex items-center justify-center text-gray-600 border-b border-gray-700 group-hover:bg-gray-700 transition"><i class="fas fa-calculator text-4xl"></i></div>
                         <div class="p-4 text-right">
@@ -235,7 +217,6 @@
             </div>
         </div>
         
-        <!-- Window: Certificates -->
         <div id="window-certificates" class="game-window hidden w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] h-[85%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
             <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
                 <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-certificate mr-2"></i> <span data-i18n="win_cert_title">الشهادات</span></h3>
@@ -243,7 +224,6 @@
             </div>
             <div class="window-content overflow-y-auto p-6 md:p-8 custom-scrollbar flex-1" dir="rtl">
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right">
-                    <!-- Cert 1 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-graduation-cap text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -251,7 +231,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_cs50_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 2 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-language text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -259,7 +238,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_3_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 3 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-check-circle text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -267,7 +245,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_1_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 4 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-shield-alt text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -275,7 +252,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_2_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 5 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-chart-line text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -283,7 +259,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_invest_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 6 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-shield-alt text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -291,7 +266,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_cyber_sec_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 7 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-brain text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -299,7 +273,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_intro_ai_2_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 8 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-road text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -307,7 +280,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_cyber_path_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 9 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-user-shield text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -315,7 +287,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_protect_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 10 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-bug text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -323,7 +294,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_attack_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 11 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-shield-alt text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -331,7 +301,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_cyber_basics_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 12 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-door-open text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -339,7 +308,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_intro_cyber_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 13 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-database text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -347,7 +315,6 @@
                             <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_ds_ml_date"></p>
                         </div>
                     </div>
-                    <!-- Cert 14 -->
                     <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
                         <i class="fas fa-code text-[var(--primary-color)] text-2xl"></i>
                         <div>
@@ -359,7 +326,6 @@
             </div>
         </div>
 
-        <!-- Window: Contact -->
         <div id="window-contact" class="game-window hidden w-[90%] md:w-[60%] lg:w-[50%] xl:w-[40%] h-[60%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
             <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
                 <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-envelope mr-2"></i> <span data-i18n="win_contact_title">تواصل معي</span></h3>
@@ -381,7 +347,6 @@
 
     </div>
 
-    <!-- HUD Navbar (Bottom Dock) -->
 
     <nav class="fixed bottom-0 left-0 w-full z-50 backdrop-blur-lg border-t border-[var(--primary-color)] p-4" style="background-color: var(--nav-bg)">
         <div class="container mx-auto flex justify-center items-center">
@@ -409,7 +374,6 @@
         </div>
     </nav>
 
-    <!-- سكريبت JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
