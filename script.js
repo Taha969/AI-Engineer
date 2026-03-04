@@ -191,7 +191,6 @@ const translations = {
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Safe Helper for Storage ---
     function getStorage(key, def) {
         try {
             return localStorage.getItem(key) || def;
@@ -209,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Elements ---
     const navButtons = document.querySelectorAll('.nav-btn');
     const windows = document.querySelectorAll('.game-window');
     const closeButtons = document.querySelectorAll('.close-btn');
@@ -219,13 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const langToggle = document.getElementById('lang-toggle');
 
-    // --- State ---
     let currentWindow = null;
     let currentLang = getStorage('lang', 'ar'); 
     let currentTheme = getStorage('theme', 'dark');
 
-    // --- Initialization ---
-    // Wrap to prevent crash
     try {
         applyTheme(currentTheme);
         applyLanguage(currentLang);
@@ -233,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Init error:", e);
     }
 
-    // --- Functions ---
 
     function applyTheme(theme) {
         currentTheme = theme;
@@ -258,7 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if(langToggle) langToggle.textContent = lang === 'ar' ? 'EN' : 'عربي';
         
-        // Update Text Content
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
@@ -273,7 +266,6 @@ document.addEventListener('DOMContentLoaded', () => {
         resetTypingEffect();
     }
     
-    // --- Window Logic ---
 
     function openWindow(targetId) {
         if (targetId === 'home') {
@@ -350,7 +342,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Typing Effect Logic ---
     let typingInterval; 
     let typingTimeout;
     
@@ -398,7 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // --- Event Listeners ---
 
     if(themeToggle) {
         themeToggle.addEventListener('click', () => {
@@ -432,7 +422,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') closeAllWindows();
     });
 
-    // Cursor Logic
     document.addEventListener('mousemove', (e) => {
         if (cursorGlow) {
             cursorGlow.style.left = e.clientX + 'px';
@@ -443,6 +432,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousedown', () => cursorGlow && cursorGlow.classList.add('active-click'));
     document.addEventListener('mouseup', () => cursorGlow && cursorGlow.classList.remove('active-click'));
 
-    // Initial State for Nav
     updateNavState('home');
 });
