@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طه المختار | محفظة الأعمال</title>
+    <!-- تحسين الأداء وأرشفة محركات البحث (SEO) -->
+    <meta name="description" content="موقع طه المختار - طالب علوم الحاسوب ومهتم بالذكاء الاصطناعي والتعلم العميق. استعرض خبراتي ومشاريعي وشهاداتي.">
+    <meta name="keywords" content="طه المختار, علوم الحاسوب, الذكاء الاصطناعي, التعلم العميق, مشاريع, شهادات, مبرمج, بايثون">
+    <meta name="author" content="طه المختار">
+
+    <!-- Open Graph / Meta Tags لمشاركة الروابط -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="طه المختار | محفظة الأعمال">
+    <meta property="og:description" content="طالب في علوم الحاسوب ومهتم بالذكاء الاصطناعي. اكتشف مهاراتي ومشاريعي التقنية.">
+    <meta property="og:image" content="hBS8PWTj3blQ.jpg">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="طه المختار | محفظة الأعمال">
+    <meta name="twitter:description" content="طالب علوم حاسوب ومهتم بالذكاء الاصطناعي والتعلم الآلي.">
+    <meta name="twitter:image" content="hBS8PWTj3blQ.jpg">
+
+    <!-- Favicon (أيقونة الموقع لتجنب خطأ 404) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+
+    <!-- تحسين الأداء باستخدام مكتبة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- تحسين الأداء بتحميل Tailwind CSS من CDN مع وضع deter -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <!-- ملف الستايل الخاص -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased overflow-hidden">
+
+    <!-- Controls -->
+    <div class="fixed top-4 left-4 z-[100] flex gap-2 dir-ltr">
+        <button id="theme-toggle" aria-label="Toggle Theme" class="w-10 h-10 rounded-full border border-[var(--primary-color)] bg-[var(--card-bg)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition flex items-center justify-center cursor-pointer">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button id="lang-toggle" aria-label="Toggle Language" class="w-10 h-10 rounded-full border border-[var(--primary-color)] bg-[var(--card-bg)] text-[var(--primary-color)] hover:bg-[var(--primary-color)] hover:text-white transition flex items-center justify-center font-bold text-sm cursor-pointer">
+            EN
+        </button>
+    </div>
+
+    <!-- 💡 تأثير المؤشر النيوني -->
+    <div id="cursor-glow" class="cursor-glow" style="pointer-events: none;"></div>
+
+    <div id="game-container" class="relative w-screen h-screen overflow-hidden">
+        
+        <!-- خلفية متحركة / Hero Section as Background -->
+        <div id="desktop-background" class="absolute inset-0 z-0">
+             <section id="hero" class="h-full w-full flex items-center justify-center p-4 relative overflow-hidden">
+                <!-- تأثير خلفية نيون خفيف -->
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--primary-color)]/20 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-600/20 rounded-full filter blur-3xl opacity-30 animate-pulse animation-delay-500"></div>
+                
+                <div class="space-y-4 md:space-y-6 text-center z-10 reveal-item">
+                    <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-300" data-i18n="hero_greeting">👋 تحية طيبة، اسمي: 👋</p>
+                    <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-extrabold hero-title leading-tight" data-i18n="hero_name" style="color: var(--text-main)">
+                        طه المختار
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-semibold text-[var(--primary-color)] mb-4">
+                        <span data-i18n="hero_interest">مهتم بـ</span> <span id="typing-text" class="border-b-4 border-[var(--primary-color)]/50"></span>
+                    </h2>
+                    <p class="text-lg sm:text-xl md:text-2xl text-gray-400" data-i18n="hero_student">💻 طالب بكالوريوس في علوم الحاسوب (CS) 💻</p>
+                    <p class="text-xs sm:text-sm md:text-base mt-8 animate-bounce opacity-70" data-i18n="hero_cta" style="color: var(--text-muted)">اختر من القائمة في الأسفل لاستكشاف ملفي الشخصي</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- نوافذ المحتوى (Content Windows) -->
+        
+        <!-- Window: About Me -->
+        <div id="window-about" class="game-window hidden w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] 2xl:w-[50%] h-[85%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
+            <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-user-circle mr-2"></i> <span data-i18n="win_about_title">من أنا</span></h3>
+                <button aria-label="إغلاق النافذة" class="close-btn text-gray-400 hover:text-red-500 transition px-2 text-2xl md:text-3xl">&times;</button>
+            </div>
+            <div class="window-content overflow-y-auto p-6 md:p-8 custom-scrollbar flex-1 text-right" dir="rtl">
+                 <div class="container mx-auto max-w-5xl">
+                    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 text-right">
+                        <div class="w-1/2 mx-auto md:w-1/3 p-4 shrink-0">
+                            <div class="w-full aspect-square rounded-full flex items-center justify-center overflow-hidden border-4 border-[var(--primary-color)] shadow-2xl relative">
+                                <img src="hBS8PWTj3blQ.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x400/1e2329/00e5ff?text=Taha';" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                         <div class="md:col-span-2 text-lg md:text-xl leading-relaxed text-[var(--text-main)] md:text-right text-center space-y-8">
+                            <div>
+                                <p class="mb-4 text-xl md:text-2xl font-semibold text-[var(--primary-color)] border-b border-gray-700 pb-2" data-i18n="about_intro_title">💡 مقدمة وشغف:</p>
+                                <p data-i18n="about_intro_text">طالب جامعي في تخصص **علوم الحاسوب**، أجمع بين المعرفة الأكاديمية والشغف العميق بتقنيات **الذكاء الاصطناعي** و**التعلم العميق**. أؤمن بأن التكنولوجيا هي الأداة الأقوى لحل التحديات المعقدة، وأسعى لأكون جزءًا من هذا التغيير عبر ابتكار **حلول تقنية حديثة**.</p>
+                            </div>
+                            <div>
+                                <p class="mb-4 text-xl md:text-2xl font-semibold text-[var(--primary-color)] border-b border-gray-700 pb-2" data-i18n="about_skills_title">🎯 المهارات والاهتمامات التقنية:</p>
+                                <ul class="list-disc pr-8 pt-4 space-y-2 text-right mr-4">
+                                    <li data-i18n="about_skill_1">**إتقان لغات البرمجة**: شغف بالتعلم المستمر للغات البرمجة المتعددة، مع تخصص عميق وكفاءة عالية في لغة Python.</li>
+                                    <li data-i18n="about_skill_2">**حل المشكلات والخوارزميات**: مهارات تحليلية قوية في حل المشكلات البرمجية (Problem Solving)، يتم صقلها من خلال تحديات يومية ومسابقات برمجية على منصات عالمية مثل LeetCode.</li>
+                                    <li data-i18n="about_skill_3">**الذكاء الاصطناعي وتعلم الآلة**: القدرة على تصميم، بناء، وتدريب نماذج الذكاء الاصطناعي (AI Models) وفهم أساسيات تعلم الآلة (Machine Learning).</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="mb-4 text-xl md:text-2xl font-semibold text-[var(--primary-color)] border-b border-gray-700 pb-2" data-i18n="about_goals_title">🚀 الأهداف المهنية:</p>
+                                <p data-i18n="about_goals_text">أتطلع إلى تطبيق هذه المهارات من خلال فرص تدريبية أو المشاركة في مشاريع رائدة.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Window: Skills -->
+        <div id="window-skills" class="game-window hidden w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] h-[85%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
+            <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-code mr-2"></i> <span data-i18n="win_skills_title">المهارات</span></h3>
+                <button aria-label="إغلاق النافذة" class="close-btn text-gray-400 hover:text-red-500 transition px-2 text-2xl md:text-3xl">&times;</button>
+            </div>
+            <div class="window-content overflow-y-auto p-6 md:p-8 custom-scrollbar flex-1" dir="rtl">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 text-center">
+                    <div class="bg-[var(--card-bg)] p-4 rounded-xl border border-gray-700">
+                        <span class="text-4xl lg:text-5xl mb-2 block">📊</span>
+                        <h3 class="text-lg lg:text-xl font-bold mb-4" data-i18n="skill_da">Data Analysis</h3>
+                        <div class="space-y-2 text-sm text-right">
+                            <div data-progress="90">
+                                <p>Python <span class="float-left text-[var(--primary-color)]">90%</span></p>
+                                <div class="h-1.5 bg-gray-700 rounded-full"><div class="skill-progress-bar h-1.5 bg-[var(--primary-color)] rounded-full" style="width: 90%"></div></div>
+                            </div>
+                            <div data-progress="80">
+                                <p>SQL <span class="float-left text-[var(--primary-color)]">80%</span></p>
+                                <div class="h-1.5 bg-gray-700 rounded-full"><div class="skill-progress-bar h-1.5 bg-[var(--primary-color)] rounded-full" style="width: 80%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-[var(--card-bg)] p-4 rounded-xl border border-gray-700">
+                        <span class="text-4xl lg:text-5xl mb-2 block">🧠</span>
+                        <h3 class="text-lg lg:text-xl font-bold mb-4" data-i18n="skill_ai">AI & ML</h3>
+                        <div class="space-y-2 text-sm text-right">
+                            <div data-progress="88">
+                                <p>TensorFlow <span class="float-left text-[var(--primary-color)]">88%</span></p>
+                                <div class="h-1.5 bg-gray-700 rounded-full"><div class="skill-progress-bar h-1.5 bg-[var(--primary-color)] rounded-full" style="width: 88%"></div></div>
+                            </div>
+                            <div data-progress="92">
+                                <p>CV <span class="float-left text-[var(--primary-color)]">92%</span></p>
+                                <div class="h-1.5 bg-gray-700 rounded-full"><div class="skill-progress-bar h-1.5 bg-[var(--primary-color)] rounded-full" style="width: 92%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-[var(--card-bg)] p-4 rounded-xl border border-gray-700">
+                        <span class="text-4xl lg:text-5xl mb-2 block">🌐</span>
+                        <h3 class="text-lg lg:text-xl font-bold mb-4" data-i18n="skill_web">Web Dev</h3>
+                        <div class="space-y-2 text-sm text-right">
+                            <div data-progress="70">
+                                <p>HTML/CSS/JS <span class="float-left text-[var(--primary-color)]">70%</span></p>
+                                <div class="h-1.5 bg-gray-700 rounded-full"><div class="skill-progress-bar h-1.5 bg-[var(--primary-color)] rounded-full" style="width: 70%"></div></div>
+                            </div>
+                            <div data-progress="95">
+                                <p>Git <span class="float-left text-[var(--primary-color)]">95%</span></p>
+                                <div class="h-1.5 bg-gray-700 rounded-full"><div class="skill-progress-bar h-1.5 bg-[var(--primary-color)] rounded-full" style="width: 95%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="bg-[var(--card-bg)] p-4 rounded-xl border border-gray-700">
+                        <span class="text-4xl lg:text-5xl mb-2 block">☁️</span>
+                        <h3 class="text-lg lg:text-xl font-bold mb-4" data-i18n="skill_cloud">Cloud</h3>
+                        <div class="space-y-2 text-sm text-right">
+                            <div data-progress="80">
+                                <p>GCP <span class="float-left text-[var(--primary-color)]">80%</span></p>
+                                <div class="h-1.5 bg-gray-700 rounded-full"><div class="skill-progress-bar h-1.5 bg-[var(--primary-color)] rounded-full" style="width: 80%"></div></div>
+                            </div>
+                            <div data-progress="70">
+                                <p>Docker <span class="float-left text-[var(--primary-color)]">70%</span></p>
+                                <div class="h-1.5 bg-gray-700 rounded-full"><div class="skill-progress-bar h-1.5 bg-[var(--primary-color)] rounded-full" style="width: 70%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Window: Projects -->
+        <div id="window-projects" class="game-window hidden w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] h-[85%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
+            <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-project-diagram mr-2"></i> <span data-i18n="win_proj_title">المشاريع</span></h3>
+                <button aria-label="إغلاق النافذة" class="close-btn text-gray-400 hover:text-red-500 transition px-2 text-2xl md:text-3xl">&times;</button>
+            </div>
+            <div class="window-content overflow-y-auto p-6 md:p-8 custom-scrollbar flex-1" dir="rtl">
+                 <div class="bg-[var(--card-bg)] p-4 md:p-6 rounded-xl border border-[var(--text-muted)] hover:border-[var(--primary-color)] transition mb-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-right">
+                     <div class="md:text-right flex-1 w-full">
+                         <p class="text-base md:text-lg leading-relaxed text-[var(--text-main)]" data-i18n="proj_more_desc">هذه بعض المشاريع، وللاطلاع على المزيد، يُرجى زيارة صفحتي على GitHub.<br>رابط الصفحة:</p>
+                         <a href="https://github.com/Taha969" target="_blank" rel="noopener noreferrer" class="text-[var(--primary-color)] hover:underline inline-block mt-2 font-mono text-center md:text-left break-all" dir="ltr">https://github.com/Taha969</a>
+                     </div>
+                     <a href="https://github.com/Taha969" target="_blank" rel="noopener noreferrer" class="w-full md:w-auto px-8 py-3 bg-[var(--primary-color)] text-white font-bold rounded-lg hover:opacity-80 transition flex items-center justify-center gap-2 whitespace-nowrap shadow-lg hover:shadow-[var(--primary-color)]/30" data-i18n="proj_more_btn">
+                         <span>اضغط هنا</span>
+                         <i class="fab fa-github text-xl"></i>
+                     </a>
+                 </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <!-- Project: Focus Flow -->
+                     <div class="bg-[var(--card-bg)] rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-[var(--primary-color)] transition group">
+                        <div class="h-40 bg-gray-800 flex items-center justify-center text-gray-600 border-b border-gray-700 group-hover:bg-gray-700 transition"><i class="fas fa-bullseye text-4xl"></i></div>
+                        <div class="p-4 text-right">
+                            <h3 class="text-lg font-bold text-[var(--primary-color)]" data-i18n="proj_focus_flow_title">Focus Flow</h3>
+                            <p class="text-gray-400 text-sm mt-2 mb-4" data-i18n="proj_focus_flow_desc">أداة لمتصفح كروم لحجب المواقع المشتتة وزيادة التركيز.</p>
+                            <div class="flex flex-col gap-3">
+                                <div class="flex gap-2">
+                                    <span class="px-2 py-1 bg-yellow-900/50 text-yellow-300 text-xs rounded">JavaScript</span>
+                                    <span class="px-2 py-1 bg-green-900/50 text-green-300 text-xs rounded">Chrome Ext</span>
+                                </div>
+                                <a href="https://github.com/Taha969/Focus-Flow" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2 bg-[var(--primary-color)] text-white rounded hover:bg-opacity-80 transition text-sm" data-i18n="view_project">عرض المشروع</a>
+                            </div>
+                        </div>
+                     </div>
+
+                     <!-- Project 4: Calculator -->
+                     <div class="bg-[var(--card-bg)] rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-[var(--primary-color)] transition group">
+                        <div class="h-40 bg-gray-800 flex items-center justify-center text-gray-600 border-b border-gray-700 group-hover:bg-gray-700 transition"><i class="fas fa-calculator text-4xl"></i></div>
+                        <div class="p-4 text-right">
+                            <h3 class="text-lg font-bold text-[var(--primary-color)]" data-i18n="proj_calc_title">آلة حاسبة Python</h3>
+                            <p class="text-gray-400 text-sm mt-2 mb-4" data-i18n="proj_calc_desc">آلة حاسبة بسيطة تم تطويرها باستخدام بايثون.</p>
+                            <div class="flex flex-col gap-3">
+                                <div class="flex gap-2">
+                                    <span class="px-2 py-1 bg-blue-900/50 text-blue-300 text-xs rounded">Python</span>
+                                </div>
+                                <a href="https://github.com/Taha969/calculator.py" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-2 bg-[var(--primary-color)] text-white rounded hover:bg-opacity-80 transition text-sm" data-i18n="view_project">عرض المشروع</a>
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+        
+        <!-- Window: Certificates -->
+        <div id="window-certificates" class="game-window hidden w-[95%] md:w-[80%] lg:w-[70%] xl:w-[60%] h-[85%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
+            <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-certificate mr-2"></i> <span data-i18n="win_cert_title">الشهادات</span></h3>
+                <button aria-label="إغلاق النافذة" class="close-btn text-gray-400 hover:text-red-500 transition px-2 text-2xl md:text-3xl">&times;</button>
+            </div>
+            <div class="window-content overflow-y-auto p-6 md:p-8 custom-scrollbar flex-1" dir="rtl">
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right">
+                    <!-- Cert 1 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-graduation-cap text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_cs50_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_cs50_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 2 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-language text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_3_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_3_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 3 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-check-circle text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_1_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_1_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 4 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-shield-alt text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_2_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_2_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 5 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-chart-line text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_invest_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_invest_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 6 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-shield-alt text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_cyber_sec_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_cyber_sec_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 7 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-brain text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_intro_ai_2_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_intro_ai_2_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 8 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-road text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_cyber_path_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_cyber_path_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 9 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-user-shield text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_protect_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_protect_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 10 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-bug text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_attack_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_attack_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 11 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-shield-alt text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_cyber_basics_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_cyber_basics_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 12 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-door-open text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_intro_cyber_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_intro_cyber_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 13 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-database text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_ds_ml_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_ds_ml_date"></p>
+                        </div>
+                    </div>
+                    <!-- Cert 14 -->
+                    <div class="bg-[var(--card-bg)] p-4 rounded border-l-4 border-[var(--primary-color)] flex items-center gap-4 hover:bg-[var(--primary-color)]/10 transition">
+                        <i class="fas fa-code text-[var(--primary-color)] text-2xl"></i>
+                        <div>
+                            <h4 class="font-bold text-[var(--text-main)] text-base md:text-lg" data-i18n="cert_tfjs_title"></h4>
+                            <p class="text-sm text-[var(--text-muted)]" data-i18n="cert_tfjs_date"></p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Window: Contact -->
+        <div id="window-contact" class="game-window hidden w-[90%] md:w-[60%] lg:w-[50%] xl:w-[40%] h-[60%] backdrop-blur-md rounded-lg z-20 overflow-hidden flex flex-col">
+            <div class="window-header flex justify-between items-center p-4 border-b border-gray-700" style="background-color: var(--header-bg)">
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-color)]"><i class="fas fa-envelope mr-2"></i> <span data-i18n="win_contact_title">تواصل معي</span></h3>
+                <button aria-label="إغلاق النافذة" class="close-btn text-gray-400 hover:text-red-500 transition px-2 text-2xl md:text-3xl">&times;</button>
+            </div>
+            <div class="window-content overflow-y-auto p-6 md:p-8 custom-scrollbar flex-1 flex flex-col items-center justify-center">
+                 <p class="text-base md:text-xl text-[var(--text-main)] mb-8 text-center" data-i18n="contact_intro">يسعدني تواصلكم معي عبر المنصات التالية:</p>
+                 <div class="flex gap-6 md:gap-8 text-4xl md:text-6xl flex-wrap justify-center mt-4">
+                     <a href="https://github.com/Taha969" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="text-[var(--text-main)] hover:text-[var(--primary-color)] transition hover:scale-110"><i class="fab fa-github"></i></a>
+                     <a href="https://www.linkedin.com/in/taha-alhajni-96593732a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="text-[var(--text-main)] hover:text-[var(--primary-color)] transition hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                     <a href="https://www.instagram.com/k.2_m1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" class="text-[var(--text-main)] hover:text-[var(--primary-color)] transition hover:scale-110"><i class="fab fa-instagram"></i></a>
+                     <a href="mailto:taha1428mm@gmail.com" aria-label="Email Me" class="text-[var(--text-main)] hover:text-[var(--primary-color)] transition hover:scale-110"><i class="fas fa-envelope"></i></a>
+                 </div>
+                 <div class="mt-8 text-[var(--text-muted)] text-sm md:text-base" data-i18n="copyright">
+                     &copy; 2026 طه المختار
+                 </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- HUD Navbar (Bottom Dock) -->
+
+    <nav class="fixed bottom-0 left-0 w-full z-50 backdrop-blur-lg border-t border-[var(--primary-color)] p-4" style="background-color: var(--nav-bg)">
+        <div class="container mx-auto flex justify-center items-center">
+            <div class="nav-links flex justify-around md:justify-center md:space-x-4 space-x-reverse w-full md:w-auto pb-2 md:pb-0 px-2 scrollbar-hide">
+                <button data-target="home" class="nav-btn whitespace-nowrap px-3 md:px-6 py-1.5 md:py-2 rounded-full border border-transparent hover:border-[var(--primary-color)] hover:bg-[var(--primary-color)]/20 text-gray-300 hover:text-white transition font-bold flex items-center gap-2 text-lg md:text-base">
+                    <i class="fas fa-home"></i> <span class="hidden md:inline" data-i18n="nav_home">الرئيسية</span>
+                </button>
+                <button data-target="window-about" class="nav-btn whitespace-nowrap px-3 md:px-6 py-1.5 md:py-2 rounded-full border border-transparent hover:border-[var(--primary-color)] hover:bg-[var(--primary-color)]/20 text-gray-300 hover:text-white transition font-bold flex items-center gap-2 text-lg md:text-base">
+                    <i class="fas fa-user"></i> <span class="hidden md:inline" data-i18n="nav_about">من أنا</span>
+                </button>
+
+                <button data-target="window-skills" class="nav-btn whitespace-nowrap px-3 md:px-6 py-1.5 md:py-2 rounded-full border border-transparent hover:border-[var(--primary-color)] hover:bg-[var(--primary-color)]/20 text-gray-300 hover:text-white transition font-bold flex items-center gap-2 text-lg md:text-base">
+                    <i class="fas fa-code"></i> <span class="hidden md:inline" data-i18n="nav_skills">المهارات</span>
+                </button>
+                <button data-target="window-projects" class="nav-btn whitespace-nowrap px-3 md:px-6 py-1.5 md:py-2 rounded-full border border-transparent hover:border-[var(--primary-color)] hover:bg-[var(--primary-color)]/20 text-gray-300 hover:text-white transition font-bold flex items-center gap-2 text-lg md:text-base">
+                    <i class="fas fa-project-diagram"></i> <span class="hidden md:inline" data-i18n="nav_projects">المشاريع</span>
+                </button>
+                <button data-target="window-certificates" class="nav-btn whitespace-nowrap px-3 md:px-6 py-1.5 md:py-2 rounded-full border border-transparent hover:border-[var(--primary-color)] hover:bg-[var(--primary-color)]/20 text-gray-300 hover:text-white transition font-bold flex items-center gap-2 text-lg md:text-base">
+                    <i class="fas fa-certificate"></i> <span class="hidden md:inline" data-i18n="nav_certificates">الشهادات</span>
+                </button>
+                 <button data-target="window-contact" class="nav-btn whitespace-nowrap px-3 md:px-6 py-1.5 md:py-2 rounded-full border border-transparent hover:border-[var(--primary-color)] hover:bg-[var(--primary-color)]/20 text-gray-300 hover:text-white transition font-bold flex items-center gap-2 text-lg md:text-base">
+                    <i class="fas fa-envelope"></i> <span class="hidden md:inline" data-i18n="nav_contact">تواصل</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- سكريبت JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

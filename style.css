@@ -1,0 +1,244 @@
+/* إضافة خط Inter للعرض الأفضل */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+:root {
+  /* Default Dark Mode - Midnight Navy & Indigo (Corporate & Sharp) */
+  --bg-color: #0b1120; /* Very deep navy/black */
+  --text-main: #f8fafc; /* Slate 50 */
+  --text-muted: #94a3b8; /* Slate 400 */
+  --primary-color: #6366f1; /* Indigo 500 - Professional Tech color */
+  --secondary-color: #3b82f6; /* Blue 500 */
+  
+  --card-bg: rgba(30, 41, 59, 0.75); /* Slate 800 */
+  --window-bg: rgba(15, 23, 42, 0.96); /* Slate 900 */
+  --header-bg: rgba(11, 17, 32, 0.85); 
+  --nav-bg: rgba(15, 23, 42, 0.9);
+  
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --glow-color: rgba(99, 102, 241, 0.15); /* Indigo glow */
+}
+
+:root[data-theme="light"] {
+  /* Light Mode - Clean Corporate White */
+  --bg-color: #ffffff; 
+  --text-main: #1e293b; /* Slate 800 */
+  --text-muted: #64748b; 
+  --primary-color: #4f46e5; /* Indigo 600 - Sharp contrast */
+  --secondary-color: #2563eb; /* Blue 600 */
+  
+  --card-bg: rgba(248, 250, 252, 0.9); /* Slate 50 */
+  --window-bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  
+  --shadow-color: rgba(79, 70, 229, 0.08); /* Subtle Indigo shadow */
+  --glow-color: rgba(79, 70, 229, 0.1);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Strict lock */
+    position: fixed; /* Prevent bouncy scroll on iOS */
+    font-family: "Inter", sans-serif;
+    
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    
+    transition: background-color 0.3s, color 0.3s;
+    
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Cursor hidden on mobile or if user prefers */
+body {
+  cursor: auto; 
+}
+
+@media (hover: none) and (pointer: coarse) {
+    body { cursor: auto; }
+}
+
+/* === Custom Cursor === (Reduced intensity) */
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px var(--glow-color); /* Reduced spread */
+  transition: width 0.15s, height 0.15s, transform 0.1s;
+  mix-blend-mode: normal; /* Removed screen blend for better visibility on light */
+  opacity: 0.4; /* Reduced opacity */
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .cursor-glow { display: none; }
+}
+
+.cursor-glow.active-click {
+  width: 15px;
+  height: 15px;
+  box-shadow: 0 0 15px var(--primary-color);
+  background-color: var(--primary-color);
+}
+
+/* === Game Container & Windows === */
+#game-container {
+    width: 100vw;
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic Height */
+    position: relative;
+    overflow: hidden;
+}
+
+.game-window {
+  border: 1px solid var(--primary-color);
+  border-color: color-mix(in srgb, var(--primary-color), transparent 70%); /* Subtle border */
+  background-color: var(--window-bg);
+  box-shadow: 0 4px 6px -1px var(--shadow-color), 0 2px 4px -1px var(--shadow-color); /* Cleaner shadow */
+  
+  /* TRANSITIONS: Explicitly exclude transform/top/left to prevent position drifting */
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.4s, 
+              border-color 0.4s, 
+              width 0.4s, 
+              height 0.4s; 
+  
+  /* ROBUST CENTERING (Inset Method) - Eliminates "Float from right" glitch */
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  /* Use fit-content or inheriting width/height from tailwind classes */
+  
+  transform-origin: center;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  
+  /* Large Screen Constraint */
+  max-width: 1400px;
+}
+
+
+/* --- MOBILE & SHORT SCREEN OVERRIDE --- */
+@media (max-width: 768px), (max-height: 500px) {
+    .game-window {
+        /* Use inset to explicitly size the absolute container and prevent overflowing */
+        inset: 10px 10px 80px 10px !important; /* top right bottom left */
+        margin: 0 !important; 
+        
+        /* Disable the translation */
+        transform: none !important;
+        
+        width: auto !important;
+        height: auto !important;
+        border-radius: 12px;
+    }
+}
+
+.game-window.active {
+    display: flex !important;
+    animation: openWindow 0.5s forwards;
+}
+
+.game-window.closing {
+    animation: closeWindow 0.3s forwards;
+}
+
+/* PC/Default Animation - SCALE ONLY (No translate needed) */
+@keyframes openWindow {
+    from { opacity: 0; transform: scale(0.95); } 
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile Animation Override */
+@media (max-width: 768px), (max-height: 500px) {
+    @keyframes openWindow {
+        from { opacity: 0; transform: scale(0.95); } 
+        to { opacity: 1; transform: scale(1); }
+    }
+}
+
+@keyframes closeWindow {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.95); }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { 
+    background: var(--text-muted); 
+    border-radius: 4px; 
+    opacity: 0.5;
+}
+
+/* Scrollbar Hide Utility */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* HUD / Navbar Styling */
+.nav-links {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    
+    /* Extra padding for bottom */
+    padding-bottom: 5px;
+}
+
+.nav-btn {
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap; /* Prevent text wrapping */
+    flex-shrink: 0; /* Prevent squishing */
+}
+
+.nav-btn::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0%; height: 2px;
+    background-color: var(--primary-color); transition: width 0.3s ease;
+}
+.nav-btn:hover::after, .nav-btn.active::after { width: 100%; }
+.nav-btn.active {
+    background-color: var(--primary-color); /* Fallback or use opacity in code if needed, but simple var is safer for theme */
+    background-color: color-mix(in srgb, var(--primary-color), transparent 90%);
+    color: var(--text-main);
+    border-color: var(--primary-color);
+    /* Removed heavy box-shadow for cleaner look */
+}
+
+/* Text Glows - Greatly Reduced */
+h1, h2, h3 { text-shadow: none; }
+.hero-title { 
+    text-shadow: 0 0 20px var(--glow-color); /* Much softer glow */
+}
+
+/* Typography Adjustments for VERY Small Screens */
+@media (max-width: 380px) {
+    h1.hero-title { font-size: 2rem !important; }
+    .nav-btn { font-size: 0.8rem; padding: 0.5rem; }
+}
+
+/* Typing Effect */
+#typing-text::after {
+  content: "|"; animation: blink 1s infinite;
+  color: var(--primary-color); margin-right: 4px; font-weight: bold;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Skill Bars */
+.skill-progress-bar {
+  transition: width 1.5s ease-out;
+  /* Removed glow for flatter, cleaner look */
+  box-shadow: none;
+}
